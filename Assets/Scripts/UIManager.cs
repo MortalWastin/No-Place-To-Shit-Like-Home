@@ -58,7 +58,6 @@ public class UIManager : MonoBehaviour
         obj.SetActive(false);
     }
 
-
     public void SetTime(float time)
     {
         if(time >= 0)
