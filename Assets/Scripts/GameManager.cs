@@ -4,6 +4,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+
+    public PlayerController playerPrefab;
+    private PlayerController currentPlayer;
     public int confidenceScore;
     public int entertainmentScore;
     public int hygieneScore;
@@ -63,12 +66,19 @@ public class GameManager : MonoBehaviour
         gameRunning = false;
         currentTime = -1;
         UIManager.Instance.SetTime(currentTime);
+        currentPlayer.isMovable = false;
     }
 
     private void SpawnObjects()
     {
-        int total = allPickUpObjects.Count;
+        if (currentPlayer == null)
+            currentPlayer = Instantiate(playerPrefab);
+        else
+            currentPlayer.Start();
+        currentPlayer.transform.position = Vector3.zero;
 
+        int total = allPickUpObjects.Count;
+        //RANDOM SPAWN ALL ITEMS
     }
     public void AddItem(PickUpObject pickUpObject)
     {
