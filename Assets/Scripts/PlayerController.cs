@@ -6,13 +6,12 @@ public class PlayerController : MonoBehaviour
     public float speed;
     [Range(0, 1)]
     public float rotationSpeed;
-    public Transform pickUp_UI;
     private List<PickUpObject> pickUp_Obj_List;
     private PickUpObject closestPickUpObject;
 
     public bool isMovable;
 
-    private void Start()
+    public void Start()
     {
         pickUp_Obj_List = new List<PickUpObject>();
         isMovable = true;
@@ -35,6 +34,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 GameManager.Instance.AddItem(closestPickUpObject);
+                UIManager.Instance.Interact(closestPickUpObject);
                 OnTriggerExit(closestPickUpObject.GetComponent<Collider>());
             }
         }
@@ -82,9 +82,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("PickUp"))
         {
             PickUpObject puo = other.GetComponent<PickUpObject>();
-            pickUp_UI.gameObject.SetActive(true);
             pickUp_Obj_List.Add(puo);
-
 
         }
     }
@@ -96,7 +94,6 @@ public class PlayerController : MonoBehaviour
             pickUp_Obj_List.Remove(puo);
             if (pickUp_Obj_List.Count == 0)
             {
-                pickUp_UI.gameObject.SetActive(false);
                 UIManager.Instance.SetInteraction(null);
             }
         }

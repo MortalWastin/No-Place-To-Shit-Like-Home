@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -8,7 +9,7 @@ public class UIManager : MonoBehaviour
     public Canvas UICanvas;
 
     public RectTransform interactionPrefab;
-    public Text interactionText;
+    public RectTransform interactionUIObject;
     private RectTransform currentInteractionPrefab;
 
     public Text timeText;
@@ -29,9 +30,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void SetInteraction(PickUpObject child)
+    public void SetInteraction(PickUpObject puo)
     {
-        if (child == null)
+        if (puo == null)
         {
             Destroy(currentInteractionPrefab.gameObject);
             //Set Text empty.
@@ -40,10 +41,24 @@ public class UIManager : MonoBehaviour
         {
             if (currentInteractionPrefab == null)
                 currentInteractionPrefab = Instantiate(interactionPrefab, WorldCanvas.transform);
-            currentInteractionPrefab.position = child.transform.position + Vector3.up;
+            currentInteractionPrefab.position = puo.transform.position + Vector3.up;
             //Set Text to value.
         }
     }
+    public void Interact(PickUpObject puo)
+    {
+        interactionUIObject.gameObject.SetActive(true);
+        interactionUIObject.GetComponentInChildren<Text>().text = string.Format("You picked up {0}!", puo.name);
+        StopCoroutine("WaitForFade");
+        StartCoroutine(WaitForFade(interactionUIObject.gameObject));
+    }
+    private IEnumerator WaitForFade(GameObject obj)
+    {
+        yield return new WaitForSeconds(1);
+        obj.SetActive(false);
+    }
+
+
     public void SetTime(float time)
     {
         if(time >= 0)
