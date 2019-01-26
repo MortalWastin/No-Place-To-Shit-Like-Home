@@ -120,6 +120,9 @@ MonoBehaviour:
   timeUpTranform: {fileID: 0}
   fontSizeLimit: 80
   stepText: {fileID: 0}
+  endAnimator: {fileID: 0}
+  endRetryButton: {fileID: 0}
+  endQuitButton: {fileID: 0}
 --- !u!114 &114766159807867372
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -14,7 +14,14 @@ public class PlayerController : MonoBehaviour
 	public bool isMovable;
 	public float totalWalk;
 
-	public void Start()
+    public Vector3 cameraOffset;
+
+    private void Awake()
+    {
+        cameraOffset = GameManager.Instance.PlayerCamera.transform.position - this.transform.position;
+    }
+
+    public void Start()
     {
         pickUp_Obj_List = new List<PickUpObject>();
         isMovable = true;
@@ -83,7 +90,9 @@ public class PlayerController : MonoBehaviour
 
 		if (currentSteps <= 0)
 			isMovable = false;
-	}
+
+        GameManager.Instance.PlayerCamera.transform.position = this.transform.position + cameraOffset;
+    }
     private void ObjectsDistance()
     {
         float distance = 0.0f;

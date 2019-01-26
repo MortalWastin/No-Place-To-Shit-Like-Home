@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public PlayerController playerPrefab;
+    public Camera PlayerCamera;
     private PlayerController currentPlayer;
     public int confidenceScore;
     public int entertainmentScore;
@@ -70,7 +71,7 @@ public class GameManager : MonoBehaviour
     }
 	private void UpdateSteps()
 	{
-		int currentSteps = playerPrefab.currentSteps;
+		int currentSteps = currentPlayer.currentSteps;
 
 		if (currentSteps <= 0)
 		{
@@ -80,10 +81,19 @@ public class GameManager : MonoBehaviour
 	}
     public void EndGame(bool won)
     {
+        if (won)
+        {
+            UIManager.Instance.SetEnd(true);
+        }
+        else
+        {
+            UIManager.Instance.SetEnd(false);
+        }
         gameRunning = false;
         UIManager.Instance.SetTime(currentTime);
         currentTime = -1;
         currentPlayer.isMovable = false;
+        ClearObjects();
     }
 
     private void SpawnObjects()
@@ -94,6 +104,7 @@ public class GameManager : MonoBehaviour
         else
             currentPlayer.Start();
         currentPlayer.transform.position = Vector3.zero;
+        currentPlayer.currentSteps = playerPrefab.currentSteps;
 
         Transform[] allSpawnPoints = spawnPositionsParent.GetComponentsInChildren<Transform>();
         allPickUpObjects.Shuffle();
@@ -101,7 +112,7 @@ public class GameManager : MonoBehaviour
         List<Transform> allSpawnPointsList = new List<Transform>();
         foreach (Transform t in allSpawnPoints)
         {
-            if (t.gameObject == this.gameObject)
+            if (t == spawnPositionsParent)
                 continue;
             allSpawnPointsList.Add(t);
         }
