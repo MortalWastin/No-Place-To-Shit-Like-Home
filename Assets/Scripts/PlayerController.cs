@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
                 closestPickUpObject = t;
             }
         }
+        UIManager.Instance.SetInteraction(closestPickUpObject);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -83,6 +84,8 @@ public class PlayerController : MonoBehaviour
             PickUpObject puo = other.GetComponent<PickUpObject>();
             pickUp_UI.gameObject.SetActive(true);
             pickUp_Obj_List.Add(puo);
+
+
         }
     }
     private void OnTriggerExit(Collider other)
@@ -92,9 +95,10 @@ public class PlayerController : MonoBehaviour
             PickUpObject puo = other.GetComponent<PickUpObject>();
             pickUp_Obj_List.Remove(puo);
             if (pickUp_Obj_List.Count == 0)
+            {
                 pickUp_UI.gameObject.SetActive(false);
-            //else
-                //Atualizar UI
+                UIManager.Instance.SetInteraction(null);
+            }
         }
     }
 }
