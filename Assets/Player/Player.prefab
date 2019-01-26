@@ -164,7 +164,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   rotationSpeed: 0.7
+  currentSteps: 20
+  stepDistance: 1
   isMovable: 0
+  totalWalk: 0
 --- !u!135 &135605637290260742
 SphereCollider:
   m_ObjectHideFlags: 1

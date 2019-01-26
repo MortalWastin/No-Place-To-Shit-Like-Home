@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     public RectTransform timeUpTranform;
     public int fontSizeLimit;
 
+	public Text stepText;
+
     private void Awake()
     {
         if (Instance == null)
@@ -76,4 +78,9 @@ public class UIManager : MonoBehaviour
         else
             timeUpTranform.gameObject.SetActive(true);
     }
+
+	public void SetSteps(int steps)
+	{
+		stepText.text = steps.ToString("0");
+	}
 }
