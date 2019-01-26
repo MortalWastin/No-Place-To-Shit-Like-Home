@@ -4,17 +4,7 @@ using UnityEngine;
 
 public class PickUpObject : MonoBehaviour {
 
-	string name;
+	public string name;
+    public int scoreValue;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-
-
-	}
 }
