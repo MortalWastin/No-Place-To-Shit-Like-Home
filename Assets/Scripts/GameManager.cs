@@ -30,13 +30,16 @@ public class GameManager : MonoBehaviour
             gameRunning = false;
             pickedUpItems = new List<PickUpObject>();
             DontDestroyOnLoad(this);
-            StartGame();
         }
         else
         {
             Destroy(this.gameObject);
             return;
         }
+    }
+    private void Start()
+    {
+        StartGame();
     }
     void Update()
     {
@@ -65,7 +68,6 @@ public class GameManager : MonoBehaviour
         if (currentTime <= 0)
             EndGame(false);
     }
-
 	private void UpdateSteps()
 	{
 		int currentSteps = playerPrefab.currentSteps;
@@ -79,8 +81,8 @@ public class GameManager : MonoBehaviour
     public void EndGame(bool won)
     {
         gameRunning = false;
-        currentTime = -1;
         UIManager.Instance.SetTime(currentTime);
+        currentTime = -1;
         currentPlayer.isMovable = false;
     }
 
