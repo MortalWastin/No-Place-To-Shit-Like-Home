@@ -5,6 +5,8 @@ using UnityEngine;
 public class PickUpObject : MonoBehaviour {
 
 	public string name;
-    public int scoreValue;
-
+    //public int scoreValue;
+    public int confidenceValue;
+    public int entertainmentValue;
+    public int hygieneValue;
 }
