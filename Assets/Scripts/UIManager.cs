@@ -16,7 +16,11 @@ public class UIManager : MonoBehaviour
     public RectTransform timeUpTranform;
     public int fontSizeLimit;
 
-	public Text stepText;
+    public Text stepText;
+
+    public Animator endAnimator;
+    public Button endRetryButton;
+    public Button endQuitButton;
 
     private void Awake()
     {
@@ -24,6 +28,17 @@ public class UIManager : MonoBehaviour
         {
             Instance = this;
             //DontDestroyOnLoad(this);
+            endQuitButton.onClick.AddListener(() =>
+            {
+                Application.Quit();
+            });
+
+            endRetryButton.onClick.AddListener(() =>
+            {
+                GameManager.Instance.StartGame();
+                endAnimator.SetBool("hasEnded", false);
+            });
+
         }
         else
         {
@@ -62,7 +77,7 @@ public class UIManager : MonoBehaviour
 
     public void SetTime(float time)
     {
-        if(time >= 0)
+        if (time >= 0)
         {
             int previousTime = (int)(time + 0.9f);
             timeText.text = (time + 0.4f).ToString("0");
@@ -75,12 +90,31 @@ public class UIManager : MonoBehaviour
                 timeText.fontSize -= 1;
             }
         }
+    }
+    public void SetSteps(int steps)
+    {
+        stepText.text = steps.ToString("0");
+    }
+    public void SetEnd(bool won)
+    {
+        Text text = timeUpTranform.GetComponentInChildren<Text>();
+        if (won)
+        {
+            text.text = "Shitastrophy averted!";
+            StartCoroutine(WaitForEnd());
+        }
         else
-            timeUpTranform.gameObject.SetActive(true);
+        {
+            text.text = "You have soiled your panties!";
+        }
+        timeUpTranform.gameObject.SetActive(true);
     }
 
-	public void SetSteps(int steps)
-	{
-		stepText.text = steps.ToString("0");
-	}
+    private IEnumerator WaitForEnd()
+    {
+        yield return new WaitForSeconds(2);
+
+        endAnimator.SetBool("hasEnded", true);
+        timeUpTranform.gameObject.SetActive(false);
+    }
 }
