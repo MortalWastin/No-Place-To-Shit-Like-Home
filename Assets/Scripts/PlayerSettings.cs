@@ -10,6 +10,7 @@ public class PlayerSettings : MonoBehaviour {
 	public KeyCode Down;
 	public KeyCode Right;
 	public KeyCode Left;
+    public KeyCode Interaction;
 
 	public void Awake()
 	{

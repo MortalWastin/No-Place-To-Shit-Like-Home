@@ -37,11 +37,16 @@ public class PlayerController : MonoBehaviour
         if (pickUp_Obj_List.Count > 0)
         {
             ObjectsDistance();
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(PlayerSettings.Instance.Interaction))
             {
-                GameManager.Instance.AddItem(closestPickUpObject);
-                UIManager.Instance.Interact(closestPickUpObject);
-                OnTriggerExit(closestPickUpObject.GetComponent<Collider>());
+                if (closestPickUpObject.tag != "Toilet")
+                {
+                    GameManager.Instance.AddItem(closestPickUpObject);
+                    UIManager.Instance.Interact(closestPickUpObject);
+                    OnTriggerExit(closestPickUpObject.GetComponent<Collider>());
+                }
+                else
+                    GameManager.Instance.EndGame(true);
             }
         }
     }

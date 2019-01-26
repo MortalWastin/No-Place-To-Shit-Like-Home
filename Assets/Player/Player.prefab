@@ -164,7 +164,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   rotationSpeed: 0.7
-  currentSteps: 20
+  currentSteps: 50
   stepDistance: 1
   isMovable: 0
   totalWalk: 0

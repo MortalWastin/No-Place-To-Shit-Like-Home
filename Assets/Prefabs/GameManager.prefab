@@ -135,6 +135,7 @@ MonoBehaviour:
   Down: 115
   Right: 100
   Left: 97
+  Interaction: 102
 --- !u!114 &114777731525114030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,6 +152,9 @@ MonoBehaviour:
   confidenceScore: 0
   entertainmentScore: 0
   hygieneScore: 0
-  spawnPositions: []
-  allPickUpObjects: []
-  maxTimeLeft: 15
+  spawnedObjects: []
+  spawnPositionsParent: {fileID: 0}
+  allPickUpObjects:
+  - {fileID: 114452738271537234, guid: 78687a61697225d4293d34ba28718570, type: 2}
+  - {fileID: 114452738271537234, guid: 78687a61697225d4293d34ba28718570, type: 2}
+  maxTimeLeft: 60
