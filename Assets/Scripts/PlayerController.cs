@@ -9,24 +9,30 @@ public class PlayerController : MonoBehaviour
     private List<PickUpObject> pickUp_Obj_List;
     private PickUpObject closestPickUpObject;
 
-    public bool isMovable;
+	public int currentSteps = 50;
+	public float stepDistance = 1;
+	public bool isMovable;
+	public float totalWalk;
 
-    public void Start()
+	public void Start()
     {
         pickUp_Obj_List = new List<PickUpObject>();
         isMovable = true;
-    }
+		totalWalk = 0f;
+		UIManager.Instance.SetSteps(currentSteps);
+	}
 
     void Update()
     {
         if (isMovable)
         {
             Movement();
+			//Animation();
             Interact();
         }
     }
 
-    private void Interact()
+	private void Interact()
     {
         if (pickUp_Obj_List.Count > 0)
         {
@@ -61,7 +67,18 @@ public class PlayerController : MonoBehaviour
         }
         transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + deltaPosition, rotationSpeed));
         transform.position += deltaPosition;
-    }
+		totalWalk += deltaPosition.magnitude;
+
+		if(totalWalk > stepDistance)
+		{
+			currentSteps -= 1;
+			totalWalk = 0f;
+			UIManager.Instance.SetSteps(currentSteps);
+		}
+
+		if (currentSteps <= 0)
+			isMovable = false;
+	}
     private void ObjectsDistance()
     {
         float distance = 0.0f;
@@ -83,7 +100,6 @@ public class PlayerController : MonoBehaviour
         {
             PickUpObject puo = other.GetComponent<PickUpObject>();
             pickUp_Obj_List.Add(puo);
-
         }
     }
     private void OnTriggerExit(Collider other)
