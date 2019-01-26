@@ -41,7 +41,10 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (gameRunning)
-            UpdateTime();
+		{
+			UpdateTime();
+			UpdateSteps();
+		}
     }
 
     public void StartGame()
@@ -63,13 +66,16 @@ public class GameManager : MonoBehaviour
             EndGame(false);
     }
 
-    private void UpdateSteps()
-    {
-       // int currentSteps = playerPrefab.currentSteps;
+	private void UpdateSteps()
+	{
+		int currentSteps = playerPrefab.currentSteps;
 
-        //if (currentSteps <= 0)
-        //    EndGame(false);
-    }
+		if (currentSteps <= 0)
+		{
+			EndGame(false);
+			Debug.Log("no more steps");
+		}
+	}
     public void EndGame(bool won)
     {
         gameRunning = false;
