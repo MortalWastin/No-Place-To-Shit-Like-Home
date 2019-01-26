@@ -8,14 +8,28 @@ public class PlayerController : MonoBehaviour
 	public float speed;
 	[Range(0, 1)]
 	public float rotationSpeed;
-
 	public Transform pickUp_UI;
+	public List<Transform> pickUp_Objs;
+	public Transform pickable;
+	public bool inRange = false;
+
+	private void Start()
+	{
+		pickUp_Objs = new List<Transform>();
+
+	}
 
 	void Update()
 	{
 		Movement();
 
+		if(pickUp_Objs != null)
+			ObjectsDistance();
 
+		if(inRange && Input.GetKeyDown(KeyCode.F))
+		{
+			Destroy(pickable.gameObject);
+		}
 	}
 
 	private void Movement()
@@ -42,16 +56,34 @@ public class PlayerController : MonoBehaviour
 		transform.position += deltaPosition;
 	}
 
+	private void ObjectsDistance()
+	{
+		float distance = 0.0f;
+		foreach (Transform t in pickUp_Objs)
+		{
+			float d = Vector3.Distance(this.transform.position, t.position);
+			if (distance > d || distance == 0)
+			{
+				distance = d;
+				pickable = t;
+			}
+		}
+	}
+
 	private void OnTriggerEnter(Collider other)
 	{
 		if (other.gameObject.layer == LayerMask.NameToLayer("PickUp"))
 		{
 			pickUp_UI.gameObject.SetActive(true);
+			pickUp_Objs.Add(other.transform);
+			inRange = true;
 		}
 	}
 
 	private void OnTriggerExit(Collider other)
 	{
 		pickUp_UI.gameObject.SetActive(false);
+		pickUp_Objs.Remove(other.transform);
+		inRange = false;
 	}
 }
