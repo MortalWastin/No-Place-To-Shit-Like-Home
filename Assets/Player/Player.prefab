@@ -168,6 +168,7 @@ MonoBehaviour:
   stepDistance: 1
   isMovable: 0
   totalWalk: 0
+  cameraOffset: {x: 0, y: 0, z: 0}
 --- !u!135 &135605637290260742
 SphereCollider:
   m_ObjectHideFlags: 1
