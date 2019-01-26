@@ -11,7 +11,8 @@ public class GameManager : MonoBehaviour
     public int entertainmentScore;
     public int hygieneScore;
 
-    public List<Transform> spawnPositions;
+    public List<GameObject> spawnedObjects;
+    public Transform spawnPositionsParent;
     public List<PickUpObject> allPickUpObjects;
     private List<PickUpObject> pickedUpItems;
 
@@ -59,9 +60,17 @@ public class GameManager : MonoBehaviour
         currentTime -= 1 * Time.deltaTime;
 
         if (currentTime <= 0)
-            EndGame();
+            EndGame(false);
     }
-    public void EndGame()
+
+    private void UpdateSteps()
+    {
+       // int currentSteps = playerPrefab.currentSteps;
+
+        //if (currentSteps <= 0)
+        //    EndGame(false);
+    }
+    public void EndGame(bool won)
     {
         gameRunning = false;
         currentTime = -1;
@@ -71,14 +80,34 @@ public class GameManager : MonoBehaviour
 
     private void SpawnObjects()
     {
+        spawnedObjects = new List<GameObject>();
         if (currentPlayer == null)
             currentPlayer = Instantiate(playerPrefab);
         else
             currentPlayer.Start();
         currentPlayer.transform.position = Vector3.zero;
 
-        int total = allPickUpObjects.Count;
-        //RANDOM SPAWN ALL ITEMS
+        Transform[] allSpawnPoints = spawnPositionsParent.GetComponentsInChildren<Transform>();
+        allPickUpObjects.Shuffle();
+
+        List<Transform> allSpawnPointsList = new List<Transform>();
+        foreach (Transform t in allSpawnPoints)
+        {
+            if (t.gameObject == this.gameObject)
+                continue;
+            allSpawnPointsList.Add(t);
+        }
+        allSpawnPointsList.Shuffle();
+
+        for(int i = 0; i < allPickUpObjects.Count; i++)
+        {
+            spawnedObjects.Add(Instantiate(allPickUpObjects[i], allSpawnPointsList[i]).gameObject);
+        }
+    }
+    private void ClearObjects()
+    {
+        foreach (GameObject gameObject in spawnedObjects)
+            Destroy(gameObject);
     }
     public void AddItem(PickUpObject pickUpObject)
     {
@@ -88,5 +117,22 @@ public class GameManager : MonoBehaviour
 
         pickedUpItems.Add(pickUpObject);
         pickUpObject.gameObject.SetActive(false);
+    }
+}
+
+public static class ListShuffle
+{
+    //EXTRA 
+    public static void Shuffle<T>(this IList<T> ts)
+    {
+        var count = ts.Count;
+        var last = count - 1;
+        for (var i = 0; i < last; ++i)
+        {
+            var r = Random.Range(i, count);
+            var tmp = ts[i];
+            ts[i] = ts[r];
+            ts[r] = tmp;
+        }
     }
 }
