@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 	[Range(0, 1)]
 	public float rotationSpeed;
 
+	public Transform pickUp_UI;
+
 	void Update()
 	{
 		Movement();
@@ -42,10 +44,14 @@ public class PlayerController : MonoBehaviour
 
 	private void OnTriggerEnter(Collider other)
 	{
-
+		if (other.gameObject.layer == LayerMask.NameToLayer("PickUp"))
+		{
+			pickUp_UI.gameObject.SetActive(true);
+		}
 	}
+
 	private void OnTriggerExit(Collider other)
 	{
-		
+		pickUp_UI.gameObject.SetActive(false);
 	}
 }
