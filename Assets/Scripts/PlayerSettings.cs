@@ -24,6 +24,11 @@ public class PlayerSettings : MonoBehaviour {
 			Destroy(this.gameObject);
 			return;
 		}
-	}
 
+		Up = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("upKey","W"));
+		Down = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("downKey", "S"));
+		Right = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("rightKey", "D"));
+		Left = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("leftKey", "A"));
+		Interaction = (KeyCode)System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("interactionKey", "E"));
+	}
 }
