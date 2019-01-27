@@ -404,8 +404,8 @@ Camera:
   m_GameObject: {fileID: 534669902}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.039248843, g: 0.3962264, b: 0.39622632, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -497,6 +497,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 81166137}
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+--- !u!114 &882000433 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114490546944209180, guid: 806f1d2848c8da6428e2b1aac6b96180,
+    type: 2}
+  m_PrefabInternal: {fileID: 81166137}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &930684790
 Prefab:
   m_ObjectHideFlags: 0
@@ -591,9 +597,41 @@ Prefab:
       propertyPath: endQuitButton
       value: 
       objectReference: {fileID: 708605119}
+    - target: {fileID: 114090038041764590, guid: f784fb062c7ee184395fdf24c2ceff79,
+        type: 2}
+      propertyPath: entValueText
+      value: 
+      objectReference: {fileID: 1345197240}
+    - target: {fileID: 114090038041764590, guid: f784fb062c7ee184395fdf24c2ceff79,
+        type: 2}
+      propertyPath: confValueText
+      value: 
+      objectReference: {fileID: 2023218503}
+    - target: {fileID: 114090038041764590, guid: f784fb062c7ee184395fdf24c2ceff79,
+        type: 2}
+      propertyPath: bhValueText
+      value: 
+      objectReference: {fileID: 1133813008}
+    - target: {fileID: 114090038041764590, guid: f784fb062c7ee184395fdf24c2ceff79,
+        type: 2}
+      propertyPath: allItemText
+      value: 
+      objectReference: {fileID: 882000433}
+    - target: {fileID: 114777731525114030, guid: f784fb062c7ee184395fdf24c2ceff79,
+        type: 2}
+      propertyPath: poopPrefab
+      value: 
+      objectReference: {fileID: 1333095316036866, guid: 52cf98ebe8d7eb241850f4317cf93558,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f784fb062c7ee184395fdf24c2ceff79, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &1133813008 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114880835246583900, guid: 806f1d2848c8da6428e2b1aac6b96180,
+    type: 2}
+  m_PrefabInternal: {fileID: 81166137}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1299054454
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: TOILET
-  confidenceValue: 0
+  confortValue: 0
   entertainmentValue: 0
   hygieneValue: 0
 --- !u!65 &1299054457
@@ -700,6 +738,12 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 223660284848393546, guid: 806f1d2848c8da6428e2b1aac6b96180,
     type: 2}
   m_PrefabInternal: {fileID: 81166137}
+--- !u!114 &1345197240 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114318945383133282, guid: 806f1d2848c8da6428e2b1aac6b96180,
+    type: 2}
+  m_PrefabInternal: {fileID: 81166137}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1500030382
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,6 +911,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b0fb4e709da2e5e41b25db0469894e9c, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &2023218503 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114941083458642008, guid: 806f1d2848c8da6428e2b1aac6b96180,
+    type: 2}
+  m_PrefabInternal: {fileID: 81166137}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!223 &2099178815 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 223478372104313972, guid: 806f1d2848c8da6428e2b1aac6b96180,
