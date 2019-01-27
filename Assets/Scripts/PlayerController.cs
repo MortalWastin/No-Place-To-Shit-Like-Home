@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     public Vector3 cameraOffset;
 
+	public bool isMoving = false;
+
     private void Awake()
     {
         cameraOffset = GameManager.Instance.PlayerCamera.transform.position - this.transform.position;
@@ -34,7 +36,7 @@ public class PlayerController : MonoBehaviour
         if (isMovable)
         {
             Movement();
-			//Animation();
+			Animation();
             Interact();
         }
     }
@@ -81,6 +83,8 @@ public class PlayerController : MonoBehaviour
         transform.position += deltaPosition;
 		totalWalk += deltaPosition.magnitude;
 
+		isMoving = (deltaPosition != Vector3.zero);
+
 		if(totalWalk > stepDistance)
 		{
 			currentSteps -= 1;
@@ -93,6 +97,16 @@ public class PlayerController : MonoBehaviour
 
         GameManager.Instance.PlayerCamera.transform.position = this.transform.position + cameraOffset;
     }
+
+	private void Animation()
+	{
+		if(isMoving)
+		{
+			//Make movement animation
+			FindObjectOfType<AudioManager>().Play("Step");
+		}
+	}
+
     private void ObjectsDistance()
     {
         float distance = 0.0f;
