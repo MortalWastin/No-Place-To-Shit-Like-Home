@@ -1,0 +1,198 @@
+fileFormatVersion: 2
+guid: d33493f7ab058c64598989ccf829d790
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: amaciador
+    100002: champo_formato_economico
+    100004: chinelo
+    100006: copo
+    100008: Cylinder
+    100010: desentupidor
+    100012: dicionario
+    100014: escova
+    100016: espuma
+    100018: gillette
+    100020: livro_deprimente
+    100022: livro_fantasia
+    100024: //RootNode
+    100026: perfume1
+    100028: perfume2
+    100030: prateleira
+    100032: revista
+    100034: rolo
+    100036: sab_o
+    100038: snack
+    100040: telemovel
+    100042: the_stick_of_joy
+    400000: amaciador
+    400002: champo_formato_economico
+    400004: chinelo
+    400006: copo
+    400008: Cylinder
+    400010: desentupidor
+    400012: dicionario
+    400014: escova
+    400016: espuma
+    400018: gillette
+    400020: livro_deprimente
+    400022: livro_fantasia
+    400024: //RootNode
+    400026: perfume1
+    400028: perfume2
+    400030: prateleira
+    400032: revista
+    400034: rolo
+    400036: sab_o
+    400038: snack
+    400040: telemovel
+    400042: the_stick_of_joy
+    2100000: unnamed
+    2300000: amaciador
+    2300002: champo_formato_economico
+    2300004: chinelo
+    2300006: copo
+    2300008: Cylinder
+    2300010: desentupidor
+    2300012: dicionario
+    2300014: escova
+    2300016: espuma
+    2300018: gillette
+    2300020: livro_deprimente
+    2300022: livro_fantasia
+    2300024: perfume1
+    2300026: perfume2
+    2300028: prateleira
+    2300030: revista
+    2300032: rolo
+    2300034: sab_o
+    2300036: snack
+    2300038: telemovel
+    2300040: the_stick_of_joy
+    3300000: amaciador
+    3300002: champo_formato_economico
+    3300004: chinelo
+    3300006: copo
+    3300008: Cylinder
+    3300010: desentupidor
+    3300012: dicionario
+    3300014: escova
+    3300016: espuma
+    3300018: gillette
+    3300020: livro_deprimente
+    3300022: livro_fantasia
+    3300024: perfume1
+    3300026: perfume2
+    3300028: prateleira
+    3300030: revista
+    3300032: rolo
+    3300034: sab_o
+    3300036: snack
+    3300038: telemovel
+    3300040: the_stick_of_joy
+    4300000: Cylinder
+    4300002: prateleira
+    4300004: the_stick_of_joy
+    4300006: chinelo
+    4300008: desentupidor
+    4300010: snack
+    4300012: escova
+    4300014: copo
+    4300016: sab_o
+    4300018: gillette
+    4300020: rolo
+    4300022: livro_deprimente
+    4300024: revista
+    4300026: dicionario
+    4300028: telemovel
+    4300030: amaciador
+    4300032: espuma
+    4300034: perfume1
+    4300036: champo_formato_economico
+    4300038: perfume2
+    4300040: livro_fantasia
+    7400000: Default Take
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

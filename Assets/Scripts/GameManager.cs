@@ -6,7 +6,10 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public PlayerController playerPrefab;
+    public Camera PlayerCamera;
+    public GameObject poopPrefab;
     private PlayerController currentPlayer;
+    private GameObject currentPoop;
     public int confidenceScore;
     public int entertainmentScore;
     public int hygieneScore;
@@ -28,7 +31,6 @@ public class GameManager : MonoBehaviour
             GameManager.Instance = this;
             currentTime = -1;
             gameRunning = false;
-            pickedUpItems = new List<PickUpObject>();
             DontDestroyOnLoad(this);
         }
         else
@@ -44,14 +46,16 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (gameRunning)
-		{
-			UpdateTime();
-			UpdateSteps();
-		}
+        {
+            UpdateTime();
+            UpdateSteps();
+        }
     }
 
     public void StartGame()
     {
+        ClearObjects();
+        pickedUpItems = new List<PickUpObject>();
         currentTime = maxTimeLeft;
         gameRunning = true;
         confidenceScore = 0;
@@ -68,18 +72,28 @@ public class GameManager : MonoBehaviour
         if (currentTime <= 0)
             EndGame(false);
     }
-	private void UpdateSteps()
-	{
-		int currentSteps = playerPrefab.currentSteps;
+    private void UpdateSteps()
+    {
+        int currentSteps = currentPlayer.currentSteps;
 
-		if (currentSteps <= 0)
-		{
-			EndGame(false);
-			Debug.Log("no more steps");
-		}
-	}
+        if (currentSteps <= 0)
+        {
+            EndGame(false);
+            Debug.Log("no more steps");
+        }
+    }
     public void EndGame(bool won)
     {
+        if (won)
+        {
+            UIManager.Instance.SetEnd(true, pickedUpItems);
+        }
+        else
+        {
+            UIManager.Instance.SetEnd(false, pickedUpItems);
+            currentPoop = Instantiate(poopPrefab, currentPlayer.transform);
+            //currentPoop.transform.position = currentPlayer.transform.position - (Vector3.down * 0.5f);
+        }
         gameRunning = false;
         UIManager.Instance.SetTime(currentTime);
         currentTime = -1;
@@ -94,6 +108,7 @@ public class GameManager : MonoBehaviour
         else
             currentPlayer.Start();
         currentPlayer.transform.position = Vector3.zero;
+        currentPlayer.currentSteps = playerPrefab.currentSteps;
 
         Transform[] allSpawnPoints = spawnPositionsParent.GetComponentsInChildren<Transform>();
         allPickUpObjects.Shuffle();
@@ -101,13 +116,13 @@ public class GameManager : MonoBehaviour
         List<Transform> allSpawnPointsList = new List<Transform>();
         foreach (Transform t in allSpawnPoints)
         {
-            if (t.gameObject == this.gameObject)
+            if (t == spawnPositionsParent)
                 continue;
             allSpawnPointsList.Add(t);
         }
         allSpawnPointsList.Shuffle();
 
-        for(int i = 0; i < allPickUpObjects.Count; i++)
+        for (int i = 0; i < allPickUpObjects.Count; i++)
         {
             spawnedObjects.Add(Instantiate(allPickUpObjects[i], allSpawnPointsList[i]).gameObject);
         }
@@ -116,10 +131,12 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject gameObject in spawnedObjects)
             Destroy(gameObject);
+        if (currentPoop != null)
+            Destroy(currentPoop);
     }
     public void AddItem(PickUpObject pickUpObject)
     {
-        confidenceScore += pickUpObject.confidenceValue;
+        confidenceScore += pickUpObject.confortValue;
         entertainmentScore += pickUpObject.entertainmentValue;
         hygieneScore += pickUpObject.hygieneValue;
 

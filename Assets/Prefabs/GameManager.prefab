@@ -120,6 +120,9 @@ MonoBehaviour:
   timeUpTranform: {fileID: 0}
   fontSizeLimit: 80
   stepText: {fileID: 0}
+  endAnimator: {fileID: 0}
+  endRetryButton: {fileID: 0}
+  endQuitButton: {fileID: 0}
 --- !u!114 &114766159807867372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -149,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 114423410051547166, guid: 35774f64fd21c66458808b80b9a4ec28,
     type: 2}
+  PlayerCamera: {fileID: 0}
   confidenceScore: 0
   entertainmentScore: 0
   hygieneScore: 0
