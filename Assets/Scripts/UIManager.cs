@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
         {
             if (currentInteractionPrefab == null)
                 currentInteractionPrefab = Instantiate(interactionPrefab, WorldCanvas.transform);
-            currentInteractionPrefab.position = puo.transform.position + Vector3.up;
+            currentInteractionPrefab.position = puo.transform.position + puo.offset;
             //Set Text to value.
         }
     }
@@ -104,22 +104,16 @@ public class UIManager : MonoBehaviour
     public void SetEnd(bool won, List<PickUpObject> pickUpObjects)
     {
         allItemText.text = "You picked up:\n";
-        int ent = 0;
-        int conf = 0;
-        int bh = 0;
+   
         if (pickUpObjects.Count == 0)
             allItemText.text += "NOTHING?!";
-        foreach(PickUpObject puo in pickUpObjects)
-        {
-            allItemText.text += puo.name + "\n";
-            ent += puo.entertainmentValue;
-            conf += puo.confortValue;
-            bh += puo.hygieneValue;
-        }
 
-        entValueText.text = ent.ToString();
-        confValueText.text = conf.ToString();
-        bhValueText.text = bh.ToString();
+        foreach (PickUpObject puo in pickUpObjects)
+            allItemText.text += puo.name + "\n";
+
+        entValueText.text = GameManager.Instance.entertainmentScore.ToString();
+        confValueText.text = GameManager.Instance.confortScore.ToString();
+        bhValueText.text = GameManager.Instance.hygieneScore.ToString();
 
         Text text = timeUpTranform.GetComponentInChildren<Text>();
         if (won)

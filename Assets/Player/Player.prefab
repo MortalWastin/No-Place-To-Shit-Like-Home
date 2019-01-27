@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4594238280856260}
   - component: {fileID: 33054569412171880}
-  - component: {fileID: 135605637290260742}
+  - component: {fileID: 136280385263203002}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -169,8 +169,8 @@ MonoBehaviour:
   isMovable: 0
   totalWalk: 0
   cameraOffset: {x: 0, y: 0, z: 0}
---- !u!135 &135605637290260742
-SphereCollider:
+--- !u!136 &136280385263203002
+CapsuleCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -178,6 +178,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.83
+  m_Height: 2.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.99, z: 0}
