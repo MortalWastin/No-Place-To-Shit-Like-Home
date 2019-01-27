@@ -68,7 +68,9 @@ public class GameManager : MonoBehaviour
         currentTime -= 1 * Time.deltaTime;
 
         if (currentTime <= 0)
-            EndGame(false);
+		{
+			EndGame(false);
+		}
     }
     private void UpdateSteps()
     {
@@ -85,14 +87,16 @@ public class GameManager : MonoBehaviour
         if (won)
         {
             UIManager.Instance.SetEnd(true, pickedUpItems);
-        }
+			FindObjectOfType<AudioManager>().Play("PoopOnWater");
+		}
         else
         {
             hygieneScore -= 100;
             UIManager.Instance.SetEnd(false, pickedUpItems);
             currentPoop = Instantiate(poopPrefab, currentPlayer.transform);
-            //currentPoop.transform.position = currentPlayer.transform.position - (Vector3.down * 0.5f);
-        }
+			FindObjectOfType<AudioManager>().Play("Moan");
+			//currentPoop.transform.position = currentPlayer.transform.position - (Vector3.down * 0.5f);
+		}
         gameRunning = false;
         UIManager.Instance.SetTime(currentTime);
         currentTime = -1;

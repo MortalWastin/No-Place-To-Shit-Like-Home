@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float stepDistance = 1;
     public bool isMovable;
     public float totalWalk;
+	public int stepCount = 0;
 
     public Vector3 cameraOffset;
 
@@ -93,6 +94,12 @@ public class PlayerController : MonoBehaviour
             currentSteps -= 1;
             totalWalk = 0f;
             UIManager.Instance.SetSteps(currentSteps);
+			stepCount++;
+			if(stepCount >= 5)
+			{
+				FindObjectOfType<AudioManager>().Play("Step");
+				stepCount = 0;
+			}
         }
 
         if (currentSteps <= 0)
@@ -107,8 +114,6 @@ public class PlayerController : MonoBehaviour
         {
             //Make movement animation
             playerAnimator.SetBool("isMoving", true);
-
-            FindObjectOfType<AudioManager>().Play("Step");
         }
         else
             playerAnimator.SetBool("isMoving", false);

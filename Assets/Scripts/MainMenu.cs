@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour {
 	{
 		this.transform.parent.gameObject.SetActive(false);
 		GameObject.Find("GameManager").GetComponent<GameManager>().StartGame();
+		FindObjectOfType<AudioManager>().Stop("MenuTheme");
+		FindObjectOfType<AudioManager>().Play("Theme");
 	}
 
 	public void ExitGame()

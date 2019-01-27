@@ -1187,9 +1187,10 @@ MonoBehaviour:
   speed: 3
   rotationSpeed: 0.7
   currentSteps: 50
-  stepDistance: 1
+  stepDistance: 1.3
   isMovable: 0
   totalWalk: 0
+  stepCount: 0
   cameraOffset: {x: 0, y: 0, z: 0}
   isMoving: 0
 --- !u!136 &136280385263203002

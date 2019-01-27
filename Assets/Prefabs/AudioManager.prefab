@@ -53,7 +53,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: Step
-    clip: {fileID: 8300000, guid: 72ead60cd8141844d8faec75d31a343b, type: 3}
-    volume: 0.808
-    pitch: 0
+    clip: {fileID: 8300000, guid: 4360340b95d17ca448b5e0278c472f7b, type: 3}
+    volume: 0.42
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PoopOnWater
+    clip: {fileID: 8300000, guid: b14bbe2d116876b42a03e90ad95c40e0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Theme
+    clip: {fileID: 8300000, guid: fbc6d790626bc594394e2140de54cb0b, type: 3}
+    volume: 0.219
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: MenuTheme
+    clip: {fileID: 8300000, guid: 2dc5c0c117a8a484ea16dcfa7019bce2, type: 3}
+    volume: 0.202
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: Moan
+    clip: {fileID: 8300000, guid: 815c5ebb67b80484eb073d86648dcaaf, type: 3}
+    volume: 0.72
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
