@@ -101,7 +101,7 @@ MonoBehaviour:
   confortValue: 0
   entertainmentValue: 0
   hygieneValue: 10
-  offset: {x: 0, y: 0.5, z: 0}
+  offset: {x: 0, y: 1, z: 0}
 --- !u!135 &135969663563464726
 SphereCollider:
   m_ObjectHideFlags: 1
