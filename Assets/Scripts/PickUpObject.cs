@@ -9,4 +9,5 @@ public class PickUpObject : MonoBehaviour {
     public int confortValue;
     public int entertainmentValue;
     public int hygieneValue;
+    public Vector3 offset;
 }

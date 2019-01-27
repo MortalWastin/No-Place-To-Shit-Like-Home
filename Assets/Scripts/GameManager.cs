@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public GameObject poopPrefab;
     private PlayerController currentPlayer;
     private GameObject currentPoop;
-    public int confidenceScore;
+    public int confortScore;
     public int entertainmentScore;
     public int hygieneScore;
 
@@ -55,11 +55,12 @@ public class GameManager : MonoBehaviour
         pickedUpItems = new List<PickUpObject>();
         currentTime = maxTimeLeft;
         gameRunning = true;
-        confidenceScore = 0;
+        confortScore = 0;
         entertainmentScore = 0;
         hygieneScore = 0;
         SpawnObjects();
         UIManager.Instance.SetTime(currentTime);
+        UIManager.Instance.SetSteps(currentPlayer.currentSteps);
     }
     private void UpdateTime()
     {
@@ -87,6 +88,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            hygieneScore -= 100;
             UIManager.Instance.SetEnd(false, pickedUpItems);
             currentPoop = Instantiate(poopPrefab, currentPlayer.transform);
             //currentPoop.transform.position = currentPlayer.transform.position - (Vector3.down * 0.5f);
@@ -133,7 +135,7 @@ public class GameManager : MonoBehaviour
     }
     public void AddItem(PickUpObject pickUpObject)
     {
-        confidenceScore += pickUpObject.confortValue;
+        confortScore += pickUpObject.confortValue;
         entertainmentScore += pickUpObject.entertainmentValue;
         hygieneScore += pickUpObject.hygieneValue;
 

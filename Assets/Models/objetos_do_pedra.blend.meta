@@ -25,6 +25,7 @@ ModelImporter:
     100038: snack
     100040: telemovel
     100042: the_stick_of_joy
+    100044: caixote
     400000: amaciador
     400002: champo_formato_economico
     400004: chinelo
@@ -47,7 +48,36 @@ ModelImporter:
     400038: snack
     400040: telemovel
     400042: the_stick_of_joy
+    400044: caixote
     2100000: unnamed
+    2100002: metal
+    2100004: pl_stico_escuro
+    2100006: white_shit
+    2100008: pl_stico_transparente
+    2100010: fluf_001
+    2100012: fluf
+    2100014: borracha
+    2100016: madeira
+    2100018: pl_stico
+    2100020: escovas
+    2100022: vidro
+    2100024: sab_o
+    2100026: pl_stico_001
+    2100028: papel
+    2100030: cart_o
+    2100032: Material_002
+    2100034: Material_003
+    2100036: pl_stico_006
+    2100038: pl_stico_007
+    2100040: pl_stico_transparente_001
+    2100042: metal_003
+    2100044: vidro_002
+    2100046: Material
+    2100048: pl_stico_005
+    2100050: pl_stico_003
+    2100052: pl_stico_004
+    2100054: pl_stico_002
+    2100056: vidro_001
     2300000: amaciador
     2300002: champo_formato_economico
     2300004: chinelo
@@ -69,6 +99,7 @@ ModelImporter:
     2300036: snack
     2300038: telemovel
     2300040: the_stick_of_joy
+    2300042: caixote
     3300000: amaciador
     3300002: champo_formato_economico
     3300004: chinelo
@@ -90,6 +121,7 @@ ModelImporter:
     3300036: snack
     3300038: telemovel
     3300040: the_stick_of_joy
+    3300042: caixote
     4300000: Cylinder
     4300002: prateleira
     4300004: the_stick_of_joy
@@ -111,6 +143,7 @@ ModelImporter:
     4300036: champo_formato_economico
     4300038: perfume2
     4300040: livro_fantasia
+    4300042: caixote
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}
