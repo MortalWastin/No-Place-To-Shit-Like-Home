@@ -39,10 +39,7 @@ public class GameManager : MonoBehaviour
             return;
         }
     }
-    private void Start()
-    {
-        StartGame();
-    }
+
     void Update()
     {
         if (gameRunning)
