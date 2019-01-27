@@ -3,20 +3,21 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Animator playerAnimator;
     public float speed;
     [Range(0, 1)]
     public float rotationSpeed;
     private List<PickUpObject> pickUp_Obj_List;
     private PickUpObject closestPickUpObject;
 
-	public int currentSteps = 50;
-	public float stepDistance = 1;
-	public bool isMovable;
-	public float totalWalk;
+    public int currentSteps = 50;
+    public float stepDistance = 1;
+    public bool isMovable;
+    public float totalWalk;
 
     public Vector3 cameraOffset;
 
-	public bool isMoving = false;
+    public bool isMoving = false;
 
     private void Awake()
     {
@@ -27,21 +28,23 @@ public class PlayerController : MonoBehaviour
     {
         pickUp_Obj_List = new List<PickUpObject>();
         isMovable = true;
-		totalWalk = 0f;
-		UIManager.Instance.SetSteps(currentSteps);
-	}
+        totalWalk = 0f;
+        UIManager.Instance.SetSteps(currentSteps);
+    }
 
     void Update()
     {
         if (isMovable)
         {
             Movement();
-			Animation();
             Interact();
         }
+        else
+            isMoving = false;
+        Animation();
     }
 
-	private void Interact()
+    private void Interact()
     {
         if (pickUp_Obj_List.Count > 0)
         {
@@ -81,31 +84,36 @@ public class PlayerController : MonoBehaviour
         }
         transform.LookAt(Vector3.Lerp(transform.position + transform.forward, transform.position + deltaPosition, rotationSpeed));
         transform.position += deltaPosition;
-		totalWalk += deltaPosition.magnitude;
+        totalWalk += deltaPosition.magnitude;
 
-		isMoving = (deltaPosition != Vector3.zero);
+        isMoving = (deltaPosition != Vector3.zero);
 
-		if(totalWalk > stepDistance)
-		{
-			currentSteps -= 1;
-			totalWalk = 0f;
-			UIManager.Instance.SetSteps(currentSteps);
-		}
+        if (totalWalk > stepDistance)
+        {
+            currentSteps -= 1;
+            totalWalk = 0f;
+            UIManager.Instance.SetSteps(currentSteps);
+        }
 
-		if (currentSteps <= 0)
-			isMovable = false;
+        if (currentSteps <= 0)
+            isMovable = false;
 
         GameManager.Instance.PlayerCamera.transform.position = this.transform.position + cameraOffset;
     }
 
-	private void Animation()
-	{
-		if(isMoving)
-		{
-			//Make movement animation
-			FindObjectOfType<AudioManager>().Play("Step");
-		}
-	}
+    private void Animation()
+    {
+        if (isMoving)
+        {
+            //Make movement animation
+            playerAnimator.SetBool("isMoving", true);
+
+            FindObjectOfType<AudioManager>().Play("Step");
+        }
+        else
+            playerAnimator.SetBool("isMoving", false);
+
+    }
 
     private void ObjectsDistance()
     {
