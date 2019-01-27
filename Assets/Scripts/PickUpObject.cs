@@ -6,7 +6,7 @@ public class PickUpObject : MonoBehaviour {
 
 	public string name;
     //public int scoreValue;
-    public int confidenceValue;
+    public int confortValue;
     public int entertainmentValue;
     public int hygieneValue;
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +22,11 @@ public class UIManager : MonoBehaviour
     public Animator endAnimator;
     public Button endRetryButton;
     public Button endQuitButton;
+
+    public Text entValueText;
+    public Text confValueText;
+    public Text bhValueText;
+    public Text allItemText;
 
     private void Awake()
     {
@@ -95,24 +101,43 @@ public class UIManager : MonoBehaviour
     {
         stepText.text = steps.ToString("0");
     }
-    public void SetEnd(bool won)
+    public void SetEnd(bool won, List<PickUpObject> pickUpObjects)
     {
+        allItemText.text = "You picked up:\n";
+        int ent = 0;
+        int conf = 0;
+        int bh = 0;
+        if (pickUpObjects.Count == 0)
+            allItemText.text += "NOTHING?!";
+        foreach(PickUpObject puo in pickUpObjects)
+        {
+            allItemText.text += puo.name + "\n";
+            ent += puo.entertainmentValue;
+            conf += puo.confortValue;
+            bh += puo.hygieneValue;
+        }
+
+        entValueText.text = ent.ToString();
+        confValueText.text = conf.ToString();
+        bhValueText.text = bh.ToString();
+
         Text text = timeUpTranform.GetComponentInChildren<Text>();
         if (won)
         {
             text.text = "Shitastrophy averted!";
-            StartCoroutine(WaitForEnd());
+            StartCoroutine(WaitForEnd(2));
         }
         else
         {
             text.text = "You have soiled your panties!";
+            StartCoroutine(WaitForEnd(4));
         }
         timeUpTranform.gameObject.SetActive(true);
     }
 
-    private IEnumerator WaitForEnd()
+    private IEnumerator WaitForEnd(int seconds)
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(seconds);
 
         endAnimator.SetBool("hasEnded", true);
         timeUpTranform.gameObject.SetActive(false);

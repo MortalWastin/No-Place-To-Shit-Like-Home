@@ -4,11 +4,22 @@ ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: Room
+    100004: RoomCollider
     400000: //RootNode
+    400002: Room
+    400004: RoomCollider
     2100000: Material_007
+    2100002: unnamed
     2300000: //RootNode
+    2300002: Room
+    2300004: RoomCollider
     3300000: //RootNode
+    3300002: Room
+    3300004: RoomCollider
     4300000: Plane
+    4300002: RoomCollider
+    4300004: Room
     7400000: Default Take
     9500000: //RootNode
   externalObjects: {}

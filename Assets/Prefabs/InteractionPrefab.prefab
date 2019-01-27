@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222834265165469986}
   - component: {fileID: 114847518102191916}
   m_Layer: 5
-  m_Name: TestPrefab
+  m_Name: InteractionPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
